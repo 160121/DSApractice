@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    int countTabs(vector<string> &arr) {
+        unordered_set<string> str;
+        int Count = 0;
+
+        for (string s : arr) {
+            if (s == "END") {
+                str.clear(); 
+            } else {
+                if (str.find(s) == str.end()) { 
+                    str.insert(s);
+                } else {
+                    str.erase(s); 
+                }
+            }
+        } 
+        Count += str.size();  
+
+        return Count;
+    }
+};
