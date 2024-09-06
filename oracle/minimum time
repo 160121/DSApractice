@@ -1,0 +1,24 @@
+//minimum time
+//s1-scanner1 time,s2-scanner2 time,n-no.of docs to be scanned
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int s1,s2,n;
+    cin>>s1>>s2>>n;
+    //using binary search
+    int first=0;
+    int last=max(s1,s2)*n;
+    while(first<last){
+        int mid=(first+last)/2;
+        int by_s1=mid/s1;
+        int by_s2=mid/s2;
+        if((by_s1+by_s2)>=n){
+            last=mid;
+        }
+        else{
+            first=mid+1;
+        }
+    }
+    cout<<first;
+}
