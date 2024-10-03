@@ -1,0 +1,21 @@
+//brute
+def count_ways(K, S):
+    if S > 3 * K:
+        return 0  # Impossible case, more chocolates than maximum possible
+
+    count = 0
+    
+    # Iterate through possible distributions
+    for x1 in range(0, K + 1):
+        for x2 in range(0, K + 1):
+            for x3 in range(0, K + 1):
+                if x1 + x2 + x3 == S:
+                    count += 1
+                    
+    return count
+import sys
+input = sys.stdin.read
+data = input().strip().split()
+K = int(data[0])
+S = int(data[1])
+print(count_ways(K, S))
