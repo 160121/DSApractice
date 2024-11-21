@@ -1,1 +1,12 @@
+import re
+
+def sort_sentence_by_embedded_numbers(sentence):
+    words = sentence.split()
+    numbered_words = [(int(re.search(r'\d+', word).group()), word) for word in words if re.search(r'\d+', word)]
+    sorted_words = [re.sub(r'\d+', '', word) for _, word in sorted(numbered_words)]
+    return ' '.join(sorted_words)
+
+sentence = "Thi1s is2 a3 te5st for4 num6bers"
+sorted_sentence = sort_sentence_by_embedded_numbers(sentence)
+print(sorted_sentence)
 
