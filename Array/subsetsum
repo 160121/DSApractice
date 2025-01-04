@@ -1,0 +1,19 @@
+//sum of all subsets as array
+//example:Input: arr[] = [2, 3]
+//Output: [0, 2, 3, 5]
+ public:
+    void subsetsumshelper(int index,vector<int>&arr,int n,vector<int>&ans,int sum){
+        if(index==n){
+            ans.push_back(sum);
+            return;
+        }
+        subsetsumshelper(index+1,arr,n,ans,sum+arr[index]);
+        subsetsumshelper(index+1,arr,n,ans,sum);
+    }
+    vector<int> subsetSums(vector<int>& arr) {
+        // code here
+        int n=arr.size();
+        vector<int>ans;
+        subsetsumshelper(0,arr,n,ans,0);
+        return ans;
+    }
